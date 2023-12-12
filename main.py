@@ -8,7 +8,7 @@ max_tokens = 64
 def perform_analysis():
     # Perform analysis for each model in the list
     # Perform according to the number of reps
-    models_list = open("lib/models.txt").read().split("\n")
+    models_list = open("files/models.txt").read().split("\n")
     for model in models_list:
         for x in range(reps):
             completion = client.chat.completions.create(

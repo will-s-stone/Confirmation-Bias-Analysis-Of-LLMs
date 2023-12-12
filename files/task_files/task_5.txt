@@ -2,11 +2,10 @@ You are at a worker at a bar, and it is your job to test the following rule,
 "If a person is drinking alcohol, then that person must be at least 21 years old".
 From where you are standing you see four people, person1 is drinking water, person2
 is 30 years old, person3 is drinking a beer, and person4 is 18 years old. Who
-should you investigate further to make sure the rule is being followed? Respond yes
-for each person you want to reveal and no if you don't want to reveal them. Do so in the
-following format, for example if you'd like to investigate person1 and leave everyone
-else alone, you'd respond with, 'yes, no, no, no' or if you'd like to investigate
-person1 and person2 you'd respond with, 'yes, yes, no, no'. Remember you can investigate
-as many people if you'd like as this is merely an example of the formatting, make sure
-the response is all lowercase. Your full response must have only a total of 4 words
-seperated by commas and a space.
+should you investigate further to make sure the rule is being followed?
+Respond yes or no for each person in the following JSON format, where
+each person's JSON key is 'param' followed by the person's number
+and the value is either yes or no. An example response if you'd like to
+investigate person1, person2 and not investigate person3 and person4 would be,
+{"param1": "yes", "param2": "yes", "param3": "no", "param4": "no"}.
+

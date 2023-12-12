@@ -1,0 +1,14 @@
+You are shown a set of blankets placed on the floor of a gymnasium,
+each of which has a disease on one side and a nation on the other.
+Blanket 1 shows polio, blanket 2 shows lymphoma, blanket 3 shows greece and blanket 4 shows brazil.
+Which blanket(s) must you turn over in order to test that if a blanket shows a
+form of cancer on one face, then its opposite face is a european country?
+Respond yes for each blanket you want to flip over and no if you don't
+want to reveal it. Do so in the following JSON format, where each blanket's
+JSON key is 'param' followed by the blankets number
+and the value is either yes or no. An example response if you'd like to
+reveal blanket 1, blanket 2 and not reveal blanket 3 and blanket 4 would be,
+{"param1": "yes", "param2": "yes", "param3": "no", "param4": "no"}.
+
+
+

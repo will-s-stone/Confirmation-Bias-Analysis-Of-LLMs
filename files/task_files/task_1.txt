@@ -1,0 +1,16 @@
+You are a quality control technician working for a card games manufacturer.
+You have to ensure that cards have been produced in accordance with the
+following rule: ‘If a card has the letter S on one side, then it has the
+number 3 on the other side.’ You already know for certain that every card
+has a letter on one side and a number on the other side. Please indicate,
+taking this into account, which card or cards you need to turn
+over, and only that or those cards, in order to determine whether the rule
+is broken in the case of each of the four cards below. The cards are as
+follows: Card1 = ‘A card with the letter S’ Card2 = ‘A card with the letter
+Q’ Card3 = ‘A card with the number 3’ Card4 = ‘A card with the number 7’
+Respond with which card or cards you should flip over according to the
+parameters. Respond yes or no for each card in the following JSON
+format, where each card's JSON key is 'param' followed by the card number
+and the value is either yes or no. An example response if you'd like to
+turn over card1, card2 and not flip over card3 and card4 would be,
+{"param1": "yes", "param2": "yes", "param3": "no", "param4": "no"}.

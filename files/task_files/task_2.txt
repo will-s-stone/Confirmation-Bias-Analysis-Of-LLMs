@@ -1,0 +1,15 @@
+You are logically tasked by a therapist to do the following activity.
+Imagine you are given a rule about a house, and you wish to find out if a
+rule was broken. The rule is as follows: 'If the room has a flower on the
+door, there is a pink bed inside'. You are only told one piece of
+information about each room which is as follows: Room 1 has a flower on the
+door, Room 2 has a name on the door, Room 3 has a pink bed inside it,
+Room 4 has a blue bed inside it. Which room(s) should you investigate in
+order finding out if the rule was broken?  Respond yes or no for each room
+you'd like to investigate in the following JSON format, where each room's
+JSON key is 'param' followed by the room number and the value is either yes
+or no. An example response if you'd like to investigate Room 1, Room 2 and
+not investigate Room 3 and Room 4 would be,
+{"param1": "yes", "param2": "yes", "param3": "no", "param4": "no"}.
+
+

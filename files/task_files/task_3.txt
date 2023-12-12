@@ -1,0 +1,25 @@
+You are tasked to do the following activity. Imagine you are given a rule about passwords
+for users on some arbitrary system, it is your job to find out if the rule was broken.
+The rule is: "If a user's password contains a special character, then it must be at least
+eight characters long.". You are tasked with finding out if the rule was broken only given
+a single piece of information about each of the four passwords. The information is as follows
+password1 has a special character, password2 is five characters long, password3 is nine characters long,
+and password4 does not have a special character. What passwords must you reveal in order to see
+if the rule was broken. Respond yes for each password you want to reveal and no if you don't
+want to reveal it.  Respond yes or no for each card in the following JSON
+format, where each password's JSON key is 'param' followed by the password number
+and the value is either yes or no. An example response if you'd like to
+reveal password1, password2 and not reveal over password3 and password4 would be,
+{"param1": "yes", "param2": "yes", "param3": "no", "param4": "no"}.
+
+
+
+
+
+
+
+Do so in the following format, for example if you'd like to investigate password1 and
+leave the rest alone, you'd respond with, 'yes, no, no, no', or if you'd like to investigate
+password1 and password2 respond with 'yes, yes, no, no', remember you can reveal as many
+passwords you'd like as this is merely an example of the formatting, make sure the response is all
+lowercase. Your full response must have only a total of 4 words seperated by commas and a space.

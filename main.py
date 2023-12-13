@@ -1,3 +1,4 @@
+import json
 import os
 
 from openai import OpenAI
@@ -7,7 +8,7 @@ temp = 0.2
 reps = 1
 max_tokens = 64
 
-def perform_analysis():
+def perform_tasks():
     # Perform analysis for each model in the list
     # Perform according to the number of reps
     dir_path = "files/task_files"
@@ -32,6 +33,21 @@ def perform_analysis():
                     )
                     print(completion.choices[0].message.content)
                     response_file.write(completion.choices[0].message.content)
+
+def perform_analysis():
+    dir_path = "files/responses"
+    for file in os.listdir(dir_path):
+        response_json = json.load(open(os.path.join(dir_path, file)))
+        model_substring = file[:file.find('_') + 1]
+        with open("files/results" + model_substring + ".txt", 'w') as results_file:
+            log_path = "files/logical_conclusions"
+            correct_logic = open(os.path.join(dir_path, ""))
+
+
+
+
+
+
 
 
 

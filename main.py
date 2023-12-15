@@ -56,4 +56,6 @@ def perform_analysis():
                 results_file.write("On " + task_substring + " it was unpredictable\n")
 
 
-perform_analysis()
+if __name__ == '__main__':
+    perform_tasks()
+    perform_analysis()

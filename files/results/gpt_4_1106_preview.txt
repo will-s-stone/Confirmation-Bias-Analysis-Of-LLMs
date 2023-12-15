@@ -3,3 +3,8 @@ On task_4 it affirmed the consequent
 On task_5 it was unpredictable
 On task_3 it did the correct logic
 On task_2 it was unpredictable
+On task_1 it affirmed the consequent
+On task_4 it affirmed the consequent
+On task_5 it was unpredictable
+On task_3 it did the correct logic
+On task_2 it was unpredictable

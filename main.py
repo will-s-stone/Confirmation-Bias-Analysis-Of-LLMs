@@ -9,8 +9,6 @@ reps = 1
 max_tokens = 64
 
 def perform_tasks():
-    # Perform analysis for each model in the list
-    # Perform according to the number of reps
     dir_path = "files/task_files"
     for task_file in os.listdir(dir_path):
         with open(os.path.join(dir_path, task_file)) as file:

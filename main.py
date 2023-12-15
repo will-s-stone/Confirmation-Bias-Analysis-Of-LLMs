@@ -19,7 +19,7 @@ def perform_tasks():
 
         models_list = open("files/models.txt").read().split("\n")
         for model in models_list:
-            with open("files/responses/" + task_file_name.replace(".txt", "_") + model.replace("-", "_") + "_" + str(temp) + ".json", 'a') as response_file:
+            with open("files/responses/" + task_file_name.replace(".txt", "_") + model.replace("-", "_") + "_" + str(temp) + ".json", 'w') as response_file:
                 for x in range(reps):
                     completion = client.chat.completions.create(
                         model=model,
@@ -38,17 +38,22 @@ def perform_analysis():
     dir_path = "files/responses"
     for file in os.listdir(dir_path):
         response_json = json.load(open(os.path.join(dir_path, file)))
-        model_substring = file[:file.find('_') + 1]
-        with open("files/results" + model_substring + ".txt", 'w') as results_file:
+        model_substring = '_'.join((file.split('_'))[2:-1])
+        task_substring = '_'.join((file.split('_'))[:2])
+        print(model_substring)
+        with open("files/results/" + model_substring + ".txt", 'a') as results_file:
             log_path = "files/logical_conclusions"
-            correct_logic = open(os.path.join(dir_path, ""))
+            correct_logic = json.load(open(os.path.join(log_path, "correct_logic/" + task_substring + ".json")))
+            affirming_consequent_logic = json.load(open(os.path.join(log_path, "affirming_consequent/" + task_substring + ".json")))
+            denying_antecedent_logic = json.load(open(os.path.join(log_path, "denying_antecedent/" + task_substring + ".json")))
+            if response_json == correct_logic:
+                results_file.write("On " + task_substring + " it did the correct logic\n")
+            elif response_json == affirming_consequent_logic:
+                results_file.write("On " + task_substring + " it affirmed the consequent\n")
+            elif response_json == denying_antecedent_logic:
+                results_file.write("On " + task_substring + " it denied the antecedent\n")
+            else:
+                results_file.write("On " + task_substring + " it was unpredictable\n")
 
 
-
-
-
-
-
-
-
-perform_tasks()
+perform_analysis()

@@ -4,7 +4,7 @@ import os
 from openai import OpenAI
 client = OpenAI()
 
-temp = 0.2
+temp = 0.0
 reps = 1
 max_tokens = 64
 
@@ -19,7 +19,7 @@ def perform_tasks():
 
         models_list = open("files/models.txt").read().split("\n")
         for model in models_list:
-            with open("files/responses/" + model.replace("-", "_") + "_" + str(temp) + "_" + task_file_name.replace(".txt", ".json"), 'a') as response_file:
+            with open("files/responses/" + task_file_name.replace(".txt", "_") + model.replace("-", "_") + "_" + str(temp) + ".json", 'a') as response_file:
                 for x in range(reps):
                     completion = client.chat.completions.create(
                         model=model,
@@ -51,4 +51,4 @@ def perform_analysis():
 
 
 
-perform_analysis()
+perform_tasks()

@@ -1,7 +1,8 @@
 You are tasked to do the following activity. Imagine you are given a rule about passwords
-for users on some arbitrary system, it is your job to find out if the rule was broken.
+for users on some arbitrary system. You know for certain that every user has a password, and
+it is your job to find out if the following rule was broken.
 The rule is: "If a user's password contains a special character, then it must be at least
-eight characters long.". You are tasked with finding out if the rule was broken only given
+eight characters long". You are tasked with finding out if the rule was broken only given
 a single piece of information about each of the four passwords. The information is as follows
 password1 has a special character, password2 is five characters long, password3 is nine characters long,
 and password4 does not have a special character. What passwords must you reveal in order to see

@@ -70,4 +70,4 @@ def get_gpt_4_response(cover_story, repetitions, temp, max_tokens):
 
 
 
-get_claude_response(formatter.get_cover_story(1), 2, 1, 1024)
+#get_claude_response(formatter.get_cover_story(1), 2, 1, 1024)

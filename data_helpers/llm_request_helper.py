@@ -21,7 +21,7 @@ def get_gemini_response(cover_story, repetitions):
 
 
 def get_claude_response(cover_story, repetitions):
-    #client = anthropic.Anthropic(api_key="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", )
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     message = client.messages.create(
         model="claude-3-haiku-20240307",
         max_tokens=1024,

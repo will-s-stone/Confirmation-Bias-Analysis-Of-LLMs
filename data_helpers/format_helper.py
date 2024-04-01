@@ -1,6 +1,7 @@
 import os
 
 def get_cover_story(n):
+    cover_story_dir = "files/task_files"
     cover_story = ""
     if n > 5:
         raise ValueError("Cover Story Undefined")
@@ -23,3 +24,5 @@ def get_cover_story(n):
     with open(os.path.abspath(os.path.join(os.path.join(os.pardir, os.path.join("files", "task_files")), cover_story))) as file:
         formatted_cover_story = file.read().replace('\n', '')
     return formatted_cover_story
+
+print(get_cover_story(3))

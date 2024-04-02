@@ -41,7 +41,8 @@ def get_claude_response(cover_story_number, repetitions, temp, max_tokens):
             ]
         )
         print(message.content)
-        formatter.log_observation(cover_story_number, message.content, model_name, temp)
+        #from message.content
+        formatter.log_observation(cover_story_number, message.json, model_name, temp)
 
 
 def get_gpt_3_5_response(cover_story_number, repetitions, temp, max_tokens):

@@ -34,24 +34,21 @@ def get_cover_story(n):
 
 def _get_json_substring(input_string):
     input_string = str(input_string)
-    match = re.search(r'\{([^}]*)\}', input_string)
+    new_input_string = input_string.replace('\n', "")
+    #match = re.search(r'\{([^}]*)\}', input_string)
+    match = re.search(r"\{([^}]*)\}", new_input_string)
     if match:
-        result = str(match.group(0).replace('\n', '')).replace('\r', '').replace(',\n', ',')
-        print("final result: " + result)
+        result = str(match.group(0))
+        print("json sub output: " + result)
         return result
+    print("Oops")
     return None
-
-
 
 
 def _process_response(cover_story_number, input_string, model, temp):
     file_name = "task_" + str(cover_story_number)
-    response = _get_json_substring(input_string).replace('\n', '')
-    print("PRESP: " + response)
-    response = response.replace('\n', '').replace('\r', '')
-    new_response = response.replace('{\n', '{')
-    print("AHHHHH new response line 53: " + new_response)
-    json_resp = json.loads(new_response)
+    response = _get_json_substring(input_string)
+    json_resp = json.loads(response)
     observation = [datetime.utcnow().strftime("%Y-%m-%d~%H:%M:%S"), model, temp, file_name, 0, 0, 0, 0]
     if cover_story_number == 1:
         if json_resp["param1"].lower() == "yes":
@@ -129,3 +126,6 @@ def log_observation(cover_story_number, response, model, temp):
     with open(file_path, 'a') as csv_file:
         writer = csv.writer(csv_file)
         writer.writerow(observation)
+
+
+print(_get_json_substring("[ContentBlock(text='Based on the given rule, \"If a card has a constant on one side, then it has an odd number on the other side,\" and the information that every card has a letter on one side and a number on the other side, here\'s the response:\n\n{\n  \"param1\": \"yes\",\n  \"param2\": \"no\",\n  \"param3\": \"yes\",\n  \"param4\": \"yes\"\n}\n\nExplanation:\n- Card1 (A card with the letter S): You need "))

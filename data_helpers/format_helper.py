@@ -51,68 +51,68 @@ def _process_response(cover_story_number, input_string, model, temp):
     json_resp = json.loads(response)
     observation = [datetime.utcnow().strftime("%Y-%m-%d~%H:%M:%S"), model, temp, file_name, 0, 0, 0, 0]
     if cover_story_number == 1:
-        if json_resp["param1"].lower() == "yes":
+        if json_resp["card1"].lower() == "yes":
             observation[4] = 1
             # modus ponens
-        if json_resp["param2"].lower() == "yes":
+        if json_resp["card2"].lower() == "yes":
             observation[7] = 1
             # denying the antecedent
-        if json_resp["param3"].lower() == "yes":
+        if json_resp["card3"].lower() == "yes":
             observation[6] = 1
             # affirming the consequent
-        if json_resp["param4"].lower() == "yes":
+        if json_resp["card4"].lower() == "yes":
             observation[5] = 1
             # modus tollens
     elif cover_story_number == 2:
-        if json_resp["param1"].lower() == "yes":
+        if json_resp["room1"].lower() == "yes":
             observation[4] = 1
             # modus ponens
-        if json_resp["param2"].lower() == "yes":
+        if json_resp["room2"].lower() == "yes":
             observation[7] = 1
             # denying the antecedent
-        if json_resp["param3"].lower() == "yes":
+        if json_resp["room3"].lower() == "yes":
             observation[6] = 1
             # affirming the consequent
-        if json_resp["param4"].lower() == "yes":
+        if json_resp["room4"].lower() == "yes":
             observation[5] = 1
             # modus tollens
     elif cover_story_number == 3:
-        if json_resp["param1"].lower() == "yes":
+        if json_resp["user1"].lower() == "yes":
             observation[4] = 1
             # modus ponens
-        if json_resp["param2"].lower() == "yes":
+        if json_resp["user2"].lower() == "yes":
             observation[5] = 1
             # modus tollens
-        if json_resp["param3"].lower() == "yes":
+        if json_resp["user3"].lower() == "yes":
             observation[6] = 1
             # affirming the consequent
-        if json_resp["param4"].lower() == "yes":
+        if json_resp["user4"].lower() == "yes":
             observation[7] = 1
             # denying the antecedent
     elif cover_story_number == 4:
-        if json_resp["param1"].lower() == "yes":
+        if json_resp["fabric1"].lower() == "yes":
             observation[7] = 1
             # denying the antecedent
-        if json_resp["param2"].lower() == "yes":
+        if json_resp["fabric2"].lower() == "yes":
             observation[4] = 1
             # modus ponens
-        if json_resp["param3"].lower() == "yes":
+        if json_resp["fabric3"].lower() == "yes":
             observation[6] = 1
             # affirming the consequent
-        if json_resp["param4"].lower() == "yes":
+        if json_resp["fabric4"].lower() == "yes":
             observation[5] = 1
             # modus tollens
     elif cover_story_number == 5:
-        if json_resp["param1"].lower() == "yes":
+        if json_resp["person1"].lower() == "yes":
             observation[7] = 1
             # denying the antecedent
-        if json_resp["param2"].lower() == "yes":
+        if json_resp["person2"].lower() == "yes":
             observation[6] = 1
             # affirming the consequent
-        if json_resp["param3"].lower() == "yes":
+        if json_resp["person3"].lower() == "yes":
             observation[4] = 1
             # modus ponens
-        if json_resp["param4"].lower() == "yes":
+        if json_resp["person4"].lower() == "yes":
             observation[5] = 1
             # modus tollens
     else:

@@ -1,16 +1,16 @@
-You are a quality control technician working for a card games manufacturer.
-You have to ensure that cards have been produced in accordance with the
-following rule: ‘If a card has a constant on one side, then it has an odd number
- on the other side’. You already know for certain that every card
-has a letter on one side and a number on the other side. Please indicate,
-taking this into account, which card or cards you need to turn
-over, and only that or those cards, in order to determine whether the rule
-was broken in the case of each of the following four cards. The cards are as
-follows: Card1 = ‘A card with the letter S’ Card2 = ‘A card with the letter
-A’ Card3 = ‘A card with the number 3’ Card4 = ‘A card with the number 4’
-Respond with which card or cards you should flip over according to the
-parameters. Respond yes or no for each card in the following JSON
-format, where each card's JSON key is 'param' followed by the card number
-and the value is either yes or no. An example response if you'd like to
-turn over card1, card2 and not flip over card3 and card4 would be,
-{"param1": "yes", "param2": "yes", "param3": "no", "param4": "no"}.
+Scenario: You are a quality control inspector at a game card factory.
+The cards have a letter on one side and a number on the other.
+You need to check if the following rule is followed: "If a card has a consonant on one side,
+it must have an odd number on the other side."
+
+Cards:
+Card 1: Letter "S"
+Card 2: Letter "A"
+Card 3: Number "3"
+Card 4: Number "4"
+
+Task: For each card, decide whether you need to flip it to verify if the rule is broken.
+Answer "yes" if you need to flip it, and "no" if you don't.
+Respond with your answers in a JSON format, with each card number as a key and "yes" or "no" as the value.
+
+Example: {"card1": "yes", "card2": "no", "card3": "no", "card4": "yes"}

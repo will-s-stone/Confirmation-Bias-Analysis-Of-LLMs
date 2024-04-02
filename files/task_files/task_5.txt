@@ -1,11 +1,15 @@
-You are at a worker at a bar, and it is your job to test the following rule,
-"If a person is drinking alcohol, then that person must be at least 21 years old".
-From where you are standing you see four people, person1 is drinking water, person2
-is 30 years old, person3 is drinking a beer, and person4 is 18 years old. Who
-should you investigate further to make sure the rule is being followed?
-Respond yes or no for each person in the following JSON format, where
-each person's JSON key is 'param' followed by the person's number
-and the value is either yes or no. An example response if you'd like to
-investigate person1, person2 and not investigate person3 and person4 would be,
-{"param1": "yes", "param2": "yes", "param3": "no", "param4": "no"}.
+Scenario: You are at a worker at a bar, and it is your job to test the following rule,
+"If a person is drinking alcohol, then that person must be at least 21 years old."
+
+People in Bar:
+Person 1: Drink - Water
+Person 2: Age - 30 Years Old
+Person 3: Drink - Beer
+Person 4: Age - 18 Years Old
+
+Task: Determine who you should you investigate to verify if the rule is broken.
+Answer "yes" if you need to investigate a person, and "no" if you don't.
+Respond with your answers in a JSON format, with each person's number as a key and "yes" or "no" as the value.
+
+Example: {"person1": "yes", "person2": "no", "person3": "no", "person4": "no"}
 

@@ -35,7 +35,6 @@ def get_cover_story(n):
 def _get_json_substring(input_string):
     input_string = str(input_string)
     new_input_string = input_string.replace('\n', "")
-    #match = re.search(r'\{([^}]*)\}', input_string)
     match = re.search(r"\{([^}]*)\}", new_input_string)
     if match:
         result = str(match.group(0))

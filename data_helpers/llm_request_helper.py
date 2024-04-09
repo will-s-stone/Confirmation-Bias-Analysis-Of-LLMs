@@ -86,7 +86,6 @@ def get_local_model_response(cover_story_number, repetitions, temp, max_tokens):
         completion = lm_studio_client.chat.completions.create(
             model="local-model",  # this field is currently unused
             messages=[
-                {"role": "system", "content": ""},
                 {"role": "user", "content": formatter.get_cover_story(cover_story_number)}
             ],
             temperature=temp,

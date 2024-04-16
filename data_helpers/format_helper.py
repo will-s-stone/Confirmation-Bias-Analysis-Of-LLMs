@@ -34,13 +34,12 @@ def get_cover_story(n):
 
 def _get_json_substring(input_string):
     input_string = str(input_string)
-    new_input_string = input_string.replace('\n', "")
+    new_input_string = input_string.replace('\\n', "")
     match = re.search(r"\{([^}]*)\}", new_input_string)
     if match:
         result = str(match.group(0))
         print("json sub output: " + result)
         return result
-    print("Oops")
     return None
 
 
@@ -122,9 +121,8 @@ def _process_response(cover_story_number, input_string, model, temp):
 def log_observation(cover_story_number, response, model, temp):
     observation = _process_response(cover_story_number, response, model, temp)
     file_path = os.path.abspath(os.path.join(os.path.join(os.pardir, os.path.join("files", "results")), "results.csv"))
-    with open(file_path, 'a') as csv_file:
+    with open(file_path, 'a', newline='') as csv_file:
         writer = csv.writer(csv_file)
         writer.writerow(observation)
 
 
-print(_get_json_substring("[ContentBlock(text='Based on the given rule, \"If a card has a constant on one side, then it has an odd number on the other side,\" and the information that every card has a letter on one side and a number on the other side, here\'s the response:\n\n{\n  \"param1\": \"yes\",\n  \"param2\": \"no\",\n  \"param3\": \"yes\",\n  \"param4\": \"yes\"\n}\n\nExplanation:\n- Card1 (A card with the letter S): You need "))

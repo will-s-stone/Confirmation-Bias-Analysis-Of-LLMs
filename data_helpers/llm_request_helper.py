@@ -5,6 +5,7 @@ import google.generativeai as genai
 import anthropic
 import openai
 from openai import OpenAI
+import time
 
 dotenv.load_dotenv()
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
@@ -18,7 +19,7 @@ anthropic_client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 lm_studio_client = OpenAI(base_url="http://localhost:1234/v1", api_key="not-needed")
 
 
-def get_gemini_response(cover_story_number, repetitions, temp, max_tokens):
+def _get_gemini_response(cover_story_number, repetitions, temp, max_tokens):
     model_name = 'gemini-pro'
     model = genai.GenerativeModel(model_name)
     generation_config = genai.GenerationConfig(temperature=temp, max_output_tokens=max_tokens)
@@ -29,8 +30,8 @@ def get_gemini_response(cover_story_number, repetitions, temp, max_tokens):
         formatter.log_observation(cover_story_number, response.text, model_name, temp)
 
 
-def get_claude_response(cover_story_number, repetitions, temp, max_tokens):
-    model_name = "claude-3-haiku-20240307"
+def _get_claude_response(cover_story_number, repetitions, temp, max_tokens):
+    model_name = "claude-3-opus-20240229"
     for x in range(repetitions):
         # client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
         message = anthropic_client.messages.create(
@@ -44,9 +45,10 @@ def get_claude_response(cover_story_number, repetitions, temp, max_tokens):
         print(message.content)
         # from message.content
         formatter.log_observation(cover_story_number, message.json, model_name, temp)
+        time.sleep(12)
 
 
-def get_gpt_3_5_response(cover_story_number, repetitions, temp, max_tokens):
+def _get_gpt_3_5_response(cover_story_number, repetitions, temp, max_tokens):
     model_name = "gpt-3.5-turbo-1106"
     for x in range(repetitions):
         completion = openai_client.chat.completions.create(
@@ -63,7 +65,7 @@ def get_gpt_3_5_response(cover_story_number, repetitions, temp, max_tokens):
         formatter.log_observation(cover_story_number, completion.choices[0].message.content, model_name, temp)
 
 
-def get_gpt_4_response(cover_story_number, repetitions, temp, max_tokens):
+def _get_gpt_4_response(cover_story_number, repetitions, temp, max_tokens):
     model_name = "gpt-3.5-turbo-1106"
     for x in range(repetitions):
         completion = openai_client.chat.completions.create(
@@ -80,11 +82,10 @@ def get_gpt_4_response(cover_story_number, repetitions, temp, max_tokens):
         formatter.log_observation(cover_story_number, completion.choices[0].message.content, model_name, temp)
 
 
-def get_local_model_response(cover_story_number, repetitions, temp, max_tokens):
-    model_name = "local-model"
+def _get_local_model_response(cover_story_number, repetitions, temp, max_tokens, model_name):
     for x in range(repetitions):
         completion = lm_studio_client.chat.completions.create(
-            model="local-model",  # this field is currently unused
+            model=model_name,
             messages=[
                 {"role": "user", "content": formatter.get_cover_story(cover_story_number)}
             ],
@@ -95,9 +96,46 @@ def get_local_model_response(cover_story_number, repetitions, temp, max_tokens):
         formatter.log_observation(cover_story_number, completion.choices[0].message.content, model_name, temp)
 
 
+def _get_qwen_1_5_response(cover_story_number, repetitions, temp, max_tokens):
+    _get_local_model_response(cover_story_number, repetitions, temp, max_tokens, "qwen-1.5-7B-Chat")
 
-get_local_model_response(1, 2, .7, 1024)
-# get_claude_response(1, 2, 1, 1024)
-# get_gpt_4_response(1, 2, 1, 1024)
-# get_gpt_3_5_response(1, 2, 1, 1024)
-# get_gemini_response(1, 2, 1, 1024)
+
+def _get_wizard_coder_response(cover_story_number, repetitions, temp, max_tokens):
+    _get_local_model_response(cover_story_number, repetitions, temp, max_tokens, "WizardCoder-Python-13B-V1.0")
+
+
+def _get_code_llama_response(cover_story_number, repetitions, temp, max_tokens):
+    _get_local_model_response(cover_story_number, repetitions, temp, max_tokens, "CodeLlama-7B-Instruct")
+
+
+def _get_mistral_response(cover_story_number, repetitions, temp, max_tokens):
+    _get_local_model_response(cover_story_number, repetitions, temp, max_tokens, "Mistral-7B-Instruct-v0.1")
+
+
+def _get_phi_2_response(cover_story_number, repetitions, temp, max_tokens):
+    _get_local_model_response(cover_story_number, repetitions, temp, max_tokens, "phi-2")
+
+
+def get_non_local_responses(repetitions, temp, max_tokens_per_response):
+    for x in range(5):
+        x = x + 1
+        # _get_gemini_response(x, repetitions, temp, max_tokens_per_response)
+        # _get_claude_response(x, repetitions, temp, max_tokens_per_response)
+        # _get_gpt_3_5_response(x, repetitions, temp, max_tokens_per_response)
+        _get_gpt_4_response(x, repetitions, temp, max_tokens_per_response)
+
+
+def get_local_responses(repetitions, temp, max_tokens_per_response):
+    for x in range(5):
+        x = x + 1
+        # _get_qwen_1_5_response(x, repetitions, temp, max_tokens_per_response)
+        # _get_wizard_coder_response(x, repetitions, temp, max_tokens_per_response)
+        # _get_code_llama_response(x, repetitions, temp, max_tokens_per_response)
+        # _get_mistral_response(x, repetitions, temp, max_tokens_per_response)
+        # _get_phi_2_response(x, repetitions, temp, max_tokens_per_response)
+
+
+# get_non_local_responses(30, 0.5, 1024)
+_get_wizard_coder_response(4, 30, 0.5, 1024)
+_get_wizard_coder_response(5, 30, 0.5, 1024)
+# _get_claude_response(1, 21, 0.5, 1024)

@@ -9,8 +9,10 @@ Fabric 3: Color - Blue
 Fabric 4: Color - Red
 
 Task: Determine which fabrics you need to investigate to verify if the rule is broken.
-Answer "yes" if you need to investigate a fabric, and "no" if you don't.
+For each fabric, answer "yes" if you need to investigate a fabric, and "no" if you don't.
 Respond with your answers in a JSON format, with each fabric number as a key and "yes" or "no" as the value.
+Make sure to include all the key value pairs in your response.
+Make sure the keys in your JSON response are all lowercase with no spaces.
 
 Example: {"fabric1": "yes", "fabric2": "no", "fabric3": "no", "fabric4": "no"}
 

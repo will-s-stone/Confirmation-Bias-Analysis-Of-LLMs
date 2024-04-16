@@ -48,6 +48,7 @@ def _process_response(cover_story_number, input_string, model, temp):
     response = _get_json_substring(input_string)
     json_resp = json.loads(response)
     observation = [datetime.utcnow().strftime("%Y-%m-%d~%H:%M:%S"), model, temp, file_name, 0, 0, 0, 0]
+    #modus ponens, modus tollens, affirming the consequent, denying the antecedent
     if cover_story_number == 1:
         if json_resp["card1"].lower() == "yes":
             observation[4] = 1

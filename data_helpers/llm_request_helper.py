@@ -66,7 +66,7 @@ def _get_gpt_3_5_response(cover_story_number, repetitions, temp, max_tokens):
 
 
 def _get_gpt_4_response(cover_story_number, repetitions, temp, max_tokens):
-    model_name = "gpt-3.5-turbo-1106"
+    model_name = "gpt-4-turbo"
     for x in range(repetitions):
         completion = openai_client.chat.completions.create(
             model=model_name,
@@ -122,7 +122,7 @@ def get_non_local_responses(repetitions, temp, max_tokens_per_response):
         # _get_gemini_response(x, repetitions, temp, max_tokens_per_response)
         # _get_claude_response(x, repetitions, temp, max_tokens_per_response)
         # _get_gpt_3_5_response(x, repetitions, temp, max_tokens_per_response)
-        #_get_gpt_4_response(x, repetitions, temp, max_tokens_per_response)
+        _get_gpt_4_response(x, repetitions, temp, max_tokens_per_response)
 
 
 def get_local_responses(repetitions, temp, max_tokens_per_response):
@@ -135,3 +135,4 @@ def get_local_responses(repetitions, temp, max_tokens_per_response):
         # _get_phi_2_response(x, repetitions, temp, max_tokens_per_response)
 
 
+get_non_local_responses(30, 0.5, 1024)

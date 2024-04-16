@@ -122,7 +122,7 @@ def get_non_local_responses(repetitions, temp, max_tokens_per_response):
         # _get_gemini_response(x, repetitions, temp, max_tokens_per_response)
         # _get_claude_response(x, repetitions, temp, max_tokens_per_response)
         # _get_gpt_3_5_response(x, repetitions, temp, max_tokens_per_response)
-        _get_gpt_4_response(x, repetitions, temp, max_tokens_per_response)
+        #_get_gpt_4_response(x, repetitions, temp, max_tokens_per_response)
 
 
 def get_local_responses(repetitions, temp, max_tokens_per_response):
@@ -135,7 +135,3 @@ def get_local_responses(repetitions, temp, max_tokens_per_response):
         # _get_phi_2_response(x, repetitions, temp, max_tokens_per_response)
 
 
-# get_non_local_responses(30, 0.5, 1024)
-_get_wizard_coder_response(4, 30, 0.5, 1024)
-_get_wizard_coder_response(5, 30, 0.5, 1024)
-# _get_claude_response(1, 21, 0.5, 1024)
